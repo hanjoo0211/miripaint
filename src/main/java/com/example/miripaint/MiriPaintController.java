@@ -3,7 +3,7 @@ package com.example.miripaint;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class MiriPaintController {
     @FXML
     private Label welcomeText;
 
