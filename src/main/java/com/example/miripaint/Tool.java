@@ -5,5 +5,5 @@ public enum Tool {
     PENCIL,
     LINE,
     RECTANGLE,
-
+    CIRCLE,
 }

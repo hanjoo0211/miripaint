@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
-
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.canvas.Canvas?>
-<HBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.miripaint.MiriPaintController">
 
-  <Canvas fx:id="canvas" width="960" height="540"/>
+  <left>
+    <VBox alignment="CENTER" spacing="20.0">
+        <Button text="Pencil" onAction="#setTool" userData="PENCIL"/>
+        <Button text="Line" onAction="#setTool" userData="LINE"/>
+        <Button text="Rectangle" onAction="#setTool" userData="RECTANGLE"/>
+        <Button text="Circle" onAction="#setTool" userData="CIRCLE"/>
+    </VBox>
+  </left>
 
-</HBox>
+  <center>
+    <Canvas fx:id="canvas" width="960" height="540"/>
+  </center>
+
+</BorderPane>
