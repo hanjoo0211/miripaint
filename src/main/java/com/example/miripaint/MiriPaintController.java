@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
@@ -16,10 +17,11 @@ import javafx.scene.paint.Color;
 
 public class MiriPaintController implements Initializable {
     @FXML private Canvas canvas;
+    @FXML private Label toolLabel;
+    @FXML private Slider lineWidthSlider;
+    @FXML private ColorPicker colorPicker;
     private GraphicsContext gc;
     private Tool tool = Tool.PENCIL;
-    @FXML private Label toolLabel;
-    @FXML Slider lineWidthSlider;
     private double startX, startY, endX, endY;
 
     @Override
@@ -49,6 +51,10 @@ public class MiriPaintController implements Initializable {
         gc.setLineWidth(lineWidthSlider.getValue());
     }
 
+    public void setColor(){
+        gc.setStroke(colorPicker.getValue());
+    }
+
     private void useTool(){
         disableTool();
         switch(tool){
@@ -76,7 +82,6 @@ public class MiriPaintController implements Initializable {
     }
 
     private void drawPencil(){
-        gc.setStroke(Color.BLACK);
         canvas.setOnMousePressed(e -> {
             gc.beginPath();
             gc.lineTo(e.getX(), e.getY());
@@ -94,7 +99,6 @@ public class MiriPaintController implements Initializable {
     }
 
     private void drawLine(){
-        gc.setStroke(Color.BLACK);
         canvas.setOnMousePressed(e -> {
             startX = e.getX();
             startY = e.getY();
@@ -107,7 +111,6 @@ public class MiriPaintController implements Initializable {
     }
 
     private void drawRectangle(){
-        gc.setStroke(Color.BLACK);
         canvas.setOnMousePressed(e -> {
             startX = e.getX();
             startY = e.getY();
@@ -122,7 +125,6 @@ public class MiriPaintController implements Initializable {
     }
 
     private void drawEllipse(){
-        gc.setStroke(Color.BLACK);
         canvas.setOnMousePressed(e -> {
             startX = e.getX();
             startY = e.getY();

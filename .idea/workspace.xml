@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92712c67-21a3-4091-9726-cbb224aa5a6f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Tool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +97,7 @@
       <workItem from="1698301403724" duration="989000" />
       <workItem from="1698730292400" duration="6190000" />
       <workItem from="1699169561238" duration="372000" />
-      <workItem from="1699174733528" duration="24874000" />
+      <workItem from="1699174733528" duration="25221000" />
     </task>
     <servers />
   </component>

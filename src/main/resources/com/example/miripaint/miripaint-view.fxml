@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Slider?>
-
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.miripaint.MiriPaintController">
 
-  <left>
-    <VBox alignment="CENTER" spacing="20.0">
-        <Label fx:id="toolLabel" text="PENCIL"/>
-        <Button text="PENCIL" onAction="#setTool" userData="PENCIL"/>
-        <Button text="LINE" onAction="#setTool" userData="LINE"/>
-        <Button text="RECTANGLE" onAction="#setTool" userData="RECTANGLE"/>
-        <Button text="ELLIPSE" onAction="#setTool" userData="ELLIPSE"/>
-    </VBox>
-  </left>
+    <left>
+        <VBox alignment="CENTER" spacing="20.0">
+            <Label fx:id="toolLabel" text="PENCIL"/>
+            <Button text="PENCIL" onAction="#setTool" userData="PENCIL"/>
+            <Button text="LINE" onAction="#setTool" userData="LINE"/>
+            <Button text="RECTANGLE" onAction="#setTool" userData="RECTANGLE"/>
+            <Button text="ELLIPSE" onAction="#setTool" userData="ELLIPSE"/>
+        </VBox>
+    </left>
 
-  <center>
-    <Canvas fx:id="canvas" width="960" height="540"/>
-  </center>
+    <center>
+        <Canvas fx:id="canvas" width="960" height="540"/>
+    </center>
 
-  <right>
-    <VBox alignment="CENTER" spacing="20.0">
-        <Label text="${lineWidthSlider.value}"/>
-        <Slider fx:id="lineWidthSlider" min="1.0" max="25.0" value="1.0" blockIncrement="1.0"
-                majorTickUnit="1.0" minorTickCount="0"
-                showTickMarks="true" showTickLabels="true" snapToTicks="true"/>
-    </VBox>
-  </right>
+    <right>
+        <VBox alignment="CENTER" spacing="20.0">
+            <Label text="${lineWidthSlider.value}"/>
+            <Slider fx:id="lineWidthSlider" min="1.0" max="25.0" value="1.0" blockIncrement="1.0"
+                    majorTickUnit="1.0" minorTickCount="0"
+                    showTickMarks="true" showTickLabels="true" snapToTicks="true"/>
+            <ColorPicker fx:id="colorPicker" onAction="#setColor">
+                <value>
+                    <javafx.scene.paint.Color fx:constant="BLACK"/>
+                </value>
+            </ColorPicker>
+        </VBox>
+    </right>
 
 </BorderPane>
