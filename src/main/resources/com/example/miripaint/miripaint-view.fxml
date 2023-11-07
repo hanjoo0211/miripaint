@@ -4,22 +4,33 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
 
-
+<?import javafx.scene.control.Label?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.miripaint.MiriPaintController">
+            fx:controller="com.example.miripaint.MiriPaintController">
 
   <left>
     <VBox alignment="CENTER" spacing="20.0">
-        <Button text="Pencil" onAction="#setTool" userData="PENCIL"/>
-        <Button text="Line" onAction="#setTool" userData="LINE"/>
-        <Button text="Rectangle" onAction="#setTool" userData="RECTANGLE"/>
-        <Button text="Circle" onAction="#setTool" userData="CIRCLE"/>
+        <Label fx:id="toolLabel" text="PENCIL"/>
+        <Button text="PENCIL" onAction="#setTool" userData="PENCIL"/>
+        <Button text="LINE" onAction="#setTool" userData="LINE"/>
+        <Button text="RECTANGLE" onAction="#setTool" userData="RECTANGLE"/>
+        <Button text="ELLIPSE" onAction="#setTool" userData="ELLIPSE"/>
     </VBox>
   </left>
 
   <center>
     <Canvas fx:id="canvas" width="960" height="540"/>
   </center>
+
+  <right>
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="${lineWidthSlider.value}"/>
+        <Slider fx:id="lineWidthSlider" min="1.0" max="25.0" value="1.0" blockIncrement="1.0"
+                majorTickUnit="1.0" minorTickCount="0"
+                showTickMarks="true" showTickLabels="true" snapToTicks="true"/>
+    </VBox>
+  </right>
 
 </BorderPane>
