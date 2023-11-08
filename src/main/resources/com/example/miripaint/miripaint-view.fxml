@@ -19,6 +19,10 @@
             <Button text="LINE" onAction="#setTool" userData="LINE"/>
             <Button text="RECTANGLE" onAction="#setTool" userData="RECTANGLE"/>
             <Button text="ELLIPSE" onAction="#setTool" userData="ELLIPSE"/>
+            <Label fx:id="selectedShapesLabel" text="Selected: 0"/>
+            <Button text="SELECT" onAction="#setTool" userData="SELECT"/>
+            <Button text="DELETE" onAction="#deleteSelectedShapes"/>
+            <Button text="CLEAR" onAction="#clearCanvas"/>
         </VBox>
     </left>
 
