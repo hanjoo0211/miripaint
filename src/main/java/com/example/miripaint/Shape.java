@@ -8,7 +8,7 @@ public class Shape {
     private double lineWidth;
     private String color;
 
-    public Shape(double startX, double startY, double endX, double endY, Tool tool, double lineWidth, String color){
+    public Shape(double startX, double startY, double endX, double endY, Tool tool, double lineWidth, String color) {
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;
@@ -18,47 +18,47 @@ public class Shape {
         this.color = color;
     }
 
-    public double getStartX(){
+    public double getStartX() {
         return startX;
     }
 
-    public double getStartY(){
+    public double getStartY() {
         return startY;
     }
 
-    public double getEndX(){
+    public double getEndX() {
         return endX;
     }
 
-    public double getEndY(){
+    public double getEndY() {
         return endY;
     }
 
-    public Tool getTool(){
+    public Tool getTool() {
         return tool;
     }
 
-    public double getLineWidth(){
+    public double getLineWidth() {
         return lineWidth;
     }
 
-    public String getColor(){
+    public String getColor() {
         return color;
     }
 
-    public void setStartX(double startX){
+    public void setStartX(double startX) {
         this.startX = startX;
     }
 
-    public void setStartY(double startY){
+    public void setStartY(double startY) {
         this.startY = startY;
     }
 
-    public void setEndX(double endX){
+    public void setEndX(double endX) {
         this.endX = endX;
     }
 
-    public void setEndY(double endY){
+    public void setEndY(double endY) {
         this.endY = endY;
     }
 

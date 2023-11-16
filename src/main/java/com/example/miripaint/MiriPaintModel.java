@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class MiriPaintModel {
     private ArrayList<Shape> shapes = new ArrayList<>();
 
-    public void addShape(Shape shape){
+    public void addShape(Shape shape) {
         shapes.add(shape);
     }
 
-    public ArrayList<Shape> getShapes(){
+    public ArrayList<Shape> getShapes() {
         return shapes;
     }
 
-    public void clearShapes(){
+    public void clearShapes() {
         shapes.clear();
     }
 }
