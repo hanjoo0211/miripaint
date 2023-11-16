@@ -3,12 +3,14 @@ package com.example.miripaint;
 import javafx.scene.shape.Path;
 
 public class Shape {
+
     private double startX, startY, endX, endY;
     private Tool tool;
     private double lineWidth;
     private String color;
 
-    public Shape(double startX, double startY, double endX, double endY, Tool tool, double lineWidth, String color) {
+    public Shape(double startX, double startY, double endX, double endY, Tool tool,
+        double lineWidth, String color) {
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;

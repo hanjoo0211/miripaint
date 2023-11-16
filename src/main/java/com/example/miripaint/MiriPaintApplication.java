@@ -9,9 +9,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MiriPaintApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MiriPaintApplication.class.getResource("miripaint-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(
+            MiriPaintApplication.class.getResource("miripaint-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
         scene.setFill(Color.WHITESMOKE);
         stage.setTitle("MiriPaint");

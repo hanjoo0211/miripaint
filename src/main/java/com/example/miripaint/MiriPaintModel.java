@@ -3,6 +3,7 @@ package com.example.miripaint;
 import java.util.ArrayList;
 
 public class MiriPaintModel {
+
     private ArrayList<Shape> shapes = new ArrayList<>();
 
     public void addShape(Shape shape) {

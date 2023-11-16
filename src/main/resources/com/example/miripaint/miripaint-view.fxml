@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.miripaint.MiriPaintController">
+    fx:controller="com.example.miripaint.MiriPaintController">
 
     <left>
         <VBox alignment="CENTER" spacing="20.0">
@@ -34,8 +34,8 @@
         <VBox alignment="CENTER" spacing="20.0">
             <Label text="${lineWidthSlider.value}"/>
             <Slider fx:id="lineWidthSlider" min="1.0" max="25.0" value="1.0" blockIncrement="1.0"
-                    majorTickUnit="1.0" minorTickCount="0"
-                    showTickMarks="true" showTickLabels="true" snapToTicks="true"/>
+                majorTickUnit="1.0" minorTickCount="0"
+                showTickMarks="true" showTickLabels="true" snapToTicks="true"/>
             <ColorPicker fx:id="colorPicker" onAction="#setColor">
                 <value>
                     <javafx.scene.paint.Color fx:constant="BLACK"/>
