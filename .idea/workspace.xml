@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="92712c67-21a3-4091-9726-cbb224aa5a6f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Shape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +103,7 @@
       <workItem from="1699169561238" duration="372000" />
       <workItem from="1699174733528" duration="37452000" />
       <workItem from="1699443408886" duration="3055000" />
-      <workItem from="1700115464388" duration="2358000" />
+      <workItem from="1700115464388" duration="6990000" />
     </task>
     <servers />
   </component>

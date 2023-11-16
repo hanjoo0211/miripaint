@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.BorderPane?>
@@ -32,6 +33,17 @@
 
     <right>
         <VBox alignment="CENTER" spacing="20.0">
+            <Label text="Recently Selected Shape"/>
+            <TextField fx:id="selectedShapeText" editable="false"/>
+            <Label text="X"/>
+            <TextField fx:id="selectedShapeStartX"/>
+            <Label text="Y"/>
+            <TextField fx:id="selectedShapeStartY"/>
+            <Label text="Width"/>
+            <TextField fx:id="selectedShapeEndX"/>
+            <Label text="Height"/>
+            <TextField fx:id="selectedShapeEndY"/>
+            <Button text="APPLY" onAction="#applyShapeChanges"/>
             <Label text="${lineWidthSlider.value}"/>
             <Slider fx:id="lineWidthSlider" min="1.0" max="25.0" value="1.0" blockIncrement="1.0"
                 majorTickUnit="1.0" minorTickCount="0"

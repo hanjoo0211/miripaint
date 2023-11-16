@@ -1,7 +1,7 @@
 package com.example.miripaint;
 
 import java.net.URL;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -23,12 +23,23 @@ public class MiriPaintController implements Initializable {
     @FXML
     private Label selectedShapesLabel;
     @FXML
+    private TextField selectedShapeText;
+    @FXML
+    private TextField selectedShapeStartX;
+    @FXML
+    private TextField selectedShapeStartY;
+    @FXML
+    private TextField selectedShapeEndX;
+    @FXML
+    private TextField selectedShapeEndY;
+    @FXML
     private Slider lineWidthSlider;
     @FXML
     private ColorPicker colorPicker;
     private GraphicsContext gc;
     private MiriPaintModel shapes = new MiriPaintModel();
-    private HashSet<Shape> selectedShapes = new HashSet<>();
+    private Shape selectedShape = null;
+    private ArrayList<Shape> selectedShapes = new ArrayList<>();
     private Tool tool = Tool.PENCIL;
     private double startX, startY, endX, endY;
 
@@ -183,7 +194,7 @@ public class MiriPaintController implements Initializable {
         canvas.setOnMousePressed(e -> {
             double x = e.getX();
             double y = e.getY();
-            boolean isSelect = false;
+            selectedShape = null;
             for (Shape shape : shapes.getShapes()) {
                 if (shape.getTool() == Tool.LINE) {
                     double x1 = shape.getStartX();
@@ -194,14 +205,12 @@ public class MiriPaintController implements Initializable {
                         Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1) / Math.sqrt(
                             Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
                     if (distance <= shape.getLineWidth()) {
-                        selectedShapes.add(shape);
-                        isSelect = true;
+                        selectedShape = shape;
                     }
                 } else if (shape.getTool() == Tool.RECTANGLE) {
                     if (x >= shape.getStartX() && x <= shape.getStartX() + shape.getEndX()
                         && y >= shape.getStartY() && y <= shape.getStartY() + shape.getEndY()) {
-                        selectedShapes.add(shape);
-                        isSelect = true;
+                        selectedShape = shape;
                     }
                 } else if (shape.getTool() == Tool.ELLIPSE) {
                     double centerX = shape.getStartX() + shape.getEndX() / 2;
@@ -211,13 +220,14 @@ public class MiriPaintController implements Initializable {
                     double distance = Math.pow(x - centerX, 2) / Math.pow(a, 2)
                         + Math.pow(y - centerY, 2) / Math.pow(b, 2);
                     if (distance <= 1) {
-                        selectedShapes.add(shape);
-                        isSelect = true;
+                        selectedShape = shape;
                     }
                 }
             }
-            if (!isSelect) {
+            if (selectedShape == null) {
                 selectedShapes.clear();
+            } else if (!selectedShapes.contains(selectedShape)) {
+                selectedShapes.add(selectedShape);
             }
             setSelectedShapesLabel();
         });
@@ -225,6 +235,20 @@ public class MiriPaintController implements Initializable {
 
     private void setSelectedShapesLabel() {
         selectedShapesLabel.setText("Selected: " + selectedShapes.size());
+        if (selectedShape == null) {
+            selectedShapeText.setText("");
+            selectedShapeStartX.setText("");
+            selectedShapeStartY.setText("");
+            selectedShapeEndX.setText("");
+            selectedShapeEndY.setText("");
+        } else {
+            selectedShapeText.setText(selectedShape.getTool().toString());
+            selectedShapeStartX.setText(String.valueOf(selectedShape.getStartX()));
+            selectedShapeStartY.setText(String.valueOf(selectedShape.getStartY()));
+            selectedShapeEndX.setText(String.valueOf(selectedShape.getEndX()));
+            selectedShapeEndY.setText(String.valueOf(selectedShape.getEndY()));
+        }
+
     }
 
     public void deleteSelectedShapes() {
@@ -239,6 +263,17 @@ public class MiriPaintController implements Initializable {
     public void clearCanvas() {
         shapes.clearShapes();
         updateCanvas();
+    }
+
+
+    public void applyShapeChanges() {
+        if (selectedShape != null) {
+            selectedShape.setStartX(Double.parseDouble(selectedShapeStartX.getText()));
+            selectedShape.setStartY(Double.parseDouble(selectedShapeStartY.getText()));
+            selectedShape.setEndX(Double.parseDouble(selectedShapeEndX.getText()));
+            selectedShape.setEndY(Double.parseDouble(selectedShapeEndY.getText()));
+            updateCanvas();
+        }
     }
 
 }
