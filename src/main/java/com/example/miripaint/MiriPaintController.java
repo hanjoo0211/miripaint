@@ -1,7 +1,7 @@
 package com.example.miripaint;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -22,7 +22,7 @@ public class MiriPaintController implements Initializable {
     @FXML private ColorPicker colorPicker;
     private GraphicsContext gc;
     private MiriPaintModel shapes = new MiriPaintModel();
-    private ArrayList<Shape> selectedShapes = new ArrayList<>();
+    private HashSet<Shape> selectedShapes = new HashSet<>();
     private Tool tool = Tool.PENCIL;
     private double startX, startY, endX, endY;
 
@@ -47,13 +47,6 @@ public class MiriPaintController implements Initializable {
             gc.setLineWidth(shape.getLineWidth());
             gc.setStroke(Color.valueOf(shape.getColor()));
             switch(shape.getTool()){
-                case PENCIL:
-                    gc.beginPath();
-                    gc.lineTo(shape.getStartX(), shape.getStartY());
-                    gc.lineTo(shape.getEndX(), shape.getEndY());
-                    gc.stroke();
-                    gc.closePath();
-                    break;
                 case LINE:
                     gc.strokeLine(shape.getStartX(), shape.getStartY(), shape.getEndX(), shape.getEndY());
                     break;
@@ -179,9 +172,33 @@ public class MiriPaintController implements Initializable {
             double y = e.getY();
             boolean isSelect = false;
             for(Shape shape : shapes.getShapes()){
-                if(x >= shape.getStartX() && x <= shape.getStartX() + shape.getEndX() && y >= shape.getStartY() && y <= shape.getStartY() + shape.getEndY()){
-                    selectedShapes.add(shape);
-                    isSelect = true;
+                if(shape.getTool() == Tool.LINE){
+                    double x1 = shape.getStartX();
+                    double y1 = shape.getStartY();
+                    double x2 = shape.getEndX();
+                    double y2 = shape.getEndY();
+                    double distance = Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1) / Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
+                    if(distance <= shape.getLineWidth()){
+                        selectedShapes.add(shape);
+                        isSelect = true;
+                    }
+                }
+                else if(shape.getTool() == Tool.RECTANGLE){
+                    if(x >= shape.getStartX() && x <= shape.getStartX() + shape.getEndX() && y >= shape.getStartY() && y <= shape.getStartY() + shape.getEndY()){
+                        selectedShapes.add(shape);
+                        isSelect = true;
+                    }
+                }
+                else if(shape.getTool() == Tool.ELLIPSE){
+                    double centerX = shape.getStartX() + shape.getEndX() / 2;
+                    double centerY = shape.getStartY() + shape.getEndY() / 2;
+                    double a = shape.getEndX() / 2;
+                    double b = shape.getEndY() / 2;
+                    double distance = Math.pow(x - centerX, 2) / Math.pow(a, 2) + Math.pow(y - centerY, 2) / Math.pow(b, 2);
+                    if(distance <= 1){
+                        selectedShapes.add(shape);
+                        isSelect = true;
+                    }
                 }
             }
             if(!isSelect){
