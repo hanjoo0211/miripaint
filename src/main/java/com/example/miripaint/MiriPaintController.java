@@ -42,7 +42,7 @@ public class MiriPaintController implements Initializable {
     private MiriPaintModel shapes = new MiriPaintModel();
     private Shape selectedShape = null;
     private ArrayList<Shape> selectedShapes = new ArrayList<>();
-    private Tool tool = Tool.PENCIL;
+    private Tool tool = Tool.LINE;
     private double startX, startY, endX, endY;
 
     @Override
@@ -101,9 +101,6 @@ public class MiriPaintController implements Initializable {
     private void useTool() {
         disableTool();
         switch (tool) {
-            case PENCIL:
-                drawPencil();
-                break;
             case LINE:
                 drawLine();
                 break;
@@ -124,23 +121,7 @@ public class MiriPaintController implements Initializable {
         canvas.setOnMouseDragged(null);
         canvas.setOnMouseReleased(null);
     }
-
-    private void drawPencil() {
-        canvas.setOnMousePressed(e -> {
-            gc.beginPath();
-            gc.lineTo(e.getX(), e.getY());
-//            gc.stroke();
-        });
-        canvas.setOnMouseDragged(e -> {
-            gc.lineTo(e.getX(), e.getY());
-//            gc.stroke();
-        });
-        canvas.setOnMouseReleased(e -> {
-            gc.lineTo(e.getX(), e.getY());
-            gc.stroke();
-            gc.closePath();
-        });
-    }
+    
 
     private void drawLine() {
         canvas.setOnMousePressed(e -> {

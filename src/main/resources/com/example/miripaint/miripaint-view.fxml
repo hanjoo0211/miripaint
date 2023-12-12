@@ -15,8 +15,7 @@
 
     <left>
         <VBox alignment="CENTER" spacing="20.0">
-            <Label fx:id="toolLabel" text="PENCIL"/>
-            <Button text="PENCIL" onAction="#setTool" userData="PENCIL"/>
+            <Label fx:id="toolLabel" text="LINE"/>
             <Button text="LINE" onAction="#setTool" userData="LINE"/>
             <Button text="RECTANGLE" onAction="#setTool" userData="RECTANGLE"/>
             <Button text="ELLIPSE" onAction="#setTool" userData="ELLIPSE"/>

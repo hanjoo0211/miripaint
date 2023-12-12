@@ -7,6 +7,7 @@
     <list default="true" id="92712c67-21a3-4091-9726-cbb224aa5a6f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Tool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +29,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "hanjoo0211"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2e11090a-ff6a-4e36-ac74-0359e54a3b80" />
+        <option name="url" value="https://github.com/hanjoo0211/miripaint.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -106,12 +121,23 @@
       <workItem from="1700115464388" duration="8804000" />
       <workItem from="1700702144866" duration="3881000" />
       <workItem from="1701651947732" duration="643000" />
-      <workItem from="1702354123452" duration="615000" />
+      <workItem from="1702354123452" duration="1001000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
