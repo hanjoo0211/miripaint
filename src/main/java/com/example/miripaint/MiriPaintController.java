@@ -39,7 +39,7 @@ public class MiriPaintController implements Initializable {
     @FXML
     private ColorPicker colorPicker;
     private GraphicsContext gc;
-    private MiriPaintModel shapes = new MiriPaintModel();
+    private ArrayList<Shape> shapes = new ArrayList<>();
     private Shape selectedShape = null;
     private ArrayList<Shape> selectedShapes = new ArrayList<>();
     private Tool tool = Tool.LINE;
@@ -62,7 +62,7 @@ public class MiriPaintController implements Initializable {
 
     private void updateCanvas() {
         setCanvas();
-        for (Shape shape : shapes.getShapes()) {
+        for (Shape shape : shapes) {
             gc.setLineWidth(shape.getLineWidth());
             gc.setStroke(Color.valueOf(shape.getColor()));
             switch (shape.getTool()) {
@@ -133,7 +133,7 @@ public class MiriPaintController implements Initializable {
             endY = e.getY();
             LineShape line = new LineShape(startX, startY, endX, endY, Tool.LINE,
                 lineWidthSlider.getValue(), colorPicker.getValue().toString());
-            shapes.addShape(line);
+            shapes.add(line);
             line.draw(gc);
         });
     }
@@ -151,7 +151,7 @@ public class MiriPaintController implements Initializable {
             RectangleShape rectangle = new RectangleShape(leftX, topY, Math.abs(endX - startX),
                 Math.abs(endY - startY), Tool.RECTANGLE, lineWidthSlider.getValue(),
                 colorPicker.getValue().toString());
-            shapes.addShape(rectangle);
+            shapes.add(rectangle);
             rectangle.draw(gc);
         });
     }
@@ -169,7 +169,7 @@ public class MiriPaintController implements Initializable {
             EllipseShape ellipse = new EllipseShape(leftX, topY, Math.abs(endX - startX),
                 Math.abs(endY - startY),
                 Tool.ELLIPSE, lineWidthSlider.getValue(), colorPicker.getValue().toString());
-            shapes.addShape(ellipse);
+            shapes.add(ellipse);
             ellipse.draw(gc);
         });
     }
@@ -179,7 +179,7 @@ public class MiriPaintController implements Initializable {
             double x = e.getX();
             double y = e.getY();
             selectedShape = null;
-            for (Shape shape : shapes.getShapes()) {
+            for (Shape shape : shapes) {
                 if (shape.getTool() == Tool.LINE) {
                     double x1 = shape.getStartX();
                     double y1 = shape.getStartY();
@@ -232,14 +232,14 @@ public class MiriPaintController implements Initializable {
             selectedShapeStartY.setText(String.valueOf(selectedShape.getStartY()));
             selectedShapeEndX.setText(String.valueOf(selectedShape.getEndX()));
             selectedShapeEndY.setText(String.valueOf(selectedShape.getEndY()));
-            selectedShapeZOrder.setText(String.valueOf(shapes.getShapes().indexOf(selectedShape)));
+            selectedShapeZOrder.setText(String.valueOf(shapes.indexOf(selectedShape)));
         }
 
     }
 
     public void deleteSelectedShapes() {
         for (Shape shape : selectedShapes) {
-            shapes.getShapes().remove(shape);
+            shapes.remove(shape);
         }
         selectedShapes.clear();
         setSelectedShapesLabel();
@@ -247,7 +247,7 @@ public class MiriPaintController implements Initializable {
     }
 
     public void clearCanvas() {
-        shapes.clearShapes();
+        shapes.clear();
         updateCanvas();
     }
 
@@ -258,8 +258,7 @@ public class MiriPaintController implements Initializable {
             selectedShape.setStartY(Double.parseDouble(selectedShapeStartY.getText()));
             selectedShape.setEndX(Double.parseDouble(selectedShapeEndX.getText()));
             selectedShape.setEndY(Double.parseDouble(selectedShapeEndY.getText()));
-            shapes.getShapes()
-                .set(Integer.parseInt(selectedShapeZOrder.getText()), selectedShape); // 문제
+            shapes.set(Integer.parseInt(selectedShapeZOrder.getText()), selectedShape); // 문제
             updateCanvas();
         }
     }
