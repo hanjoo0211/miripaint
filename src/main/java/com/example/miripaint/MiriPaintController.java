@@ -33,6 +33,8 @@ public class MiriPaintController implements Initializable {
     @FXML
     private TextField selectedShapeEndY;
     @FXML
+    private TextField selectedShapeZOrder;
+    @FXML
     private Slider lineWidthSlider;
     @FXML
     private ColorPicker colorPicker;
@@ -241,12 +243,14 @@ public class MiriPaintController implements Initializable {
             selectedShapeStartY.setText("");
             selectedShapeEndX.setText("");
             selectedShapeEndY.setText("");
+            selectedShapeZOrder.setText("");
         } else {
             selectedShapeText.setText(selectedShape.getTool().toString());
             selectedShapeStartX.setText(String.valueOf(selectedShape.getStartX()));
             selectedShapeStartY.setText(String.valueOf(selectedShape.getStartY()));
             selectedShapeEndX.setText(String.valueOf(selectedShape.getEndX()));
             selectedShapeEndY.setText(String.valueOf(selectedShape.getEndY()));
+            selectedShapeZOrder.setText(String.valueOf(shapes.getShapes().indexOf(selectedShape)));
         }
 
     }
@@ -272,6 +276,8 @@ public class MiriPaintController implements Initializable {
             selectedShape.setStartY(Double.parseDouble(selectedShapeStartY.getText()));
             selectedShape.setEndX(Double.parseDouble(selectedShapeEndX.getText()));
             selectedShape.setEndY(Double.parseDouble(selectedShapeEndY.getText()));
+            shapes.getShapes()
+                .set(Integer.parseInt(selectedShapeZOrder.getText()), selectedShape); // 문제
             updateCanvas();
         }
     }

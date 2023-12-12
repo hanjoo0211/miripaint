@@ -43,6 +43,8 @@
             <TextField fx:id="selectedShapeEndX"/>
             <Label text="Height"/>
             <TextField fx:id="selectedShapeEndY"/>
+            <Label text="Z Order"/>
+            <TextField fx:id="selectedShapeZOrder"/>
             <Button text="APPLY" onAction="#applyShapeChanges"/>
             <Label text="${lineWidthSlider.value}"/>
             <Slider fx:id="lineWidthSlider" min="1.0" max="25.0" value="1.0" blockIncrement="1.0"
