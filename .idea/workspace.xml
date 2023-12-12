@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="92712c67-21a3-4091-9726-cbb224aa5a6f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/EllipseShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/EllipseShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/miripaint/miripaint-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +121,7 @@
       <workItem from="1700115464388" duration="8804000" />
       <workItem from="1700702144866" duration="3881000" />
       <workItem from="1701651947732" duration="643000" />
-      <workItem from="1702354123452" duration="1001000" />
+      <workItem from="1702354123452" duration="4987000" />
     </task>
     <servers />
   </component>

@@ -121,7 +121,7 @@ public class MiriPaintController implements Initializable {
         canvas.setOnMouseDragged(null);
         canvas.setOnMouseReleased(null);
     }
-    
+
 
     private void drawLine() {
         canvas.setOnMousePressed(e -> {
@@ -131,10 +131,10 @@ public class MiriPaintController implements Initializable {
         canvas.setOnMouseReleased(e -> {
             endX = e.getX();
             endY = e.getY();
-            Shape line = new Shape(startX, startY, endX, endY, Tool.LINE,
+            LineShape line = new LineShape(startX, startY, endX, endY, Tool.LINE,
                 lineWidthSlider.getValue(), colorPicker.getValue().toString());
             shapes.addShape(line);
-            gc.strokeLine(startX, startY, endX, endY);
+            line.draw(gc);
         });
     }
 
@@ -148,11 +148,11 @@ public class MiriPaintController implements Initializable {
             endY = e.getY();
             double leftX = Math.min(startX, endX);
             double topY = Math.min(startY, endY);
-            Shape rectangle = new Shape(leftX, topY, Math.abs(endX - startX),
+            RectangleShape rectangle = new RectangleShape(leftX, topY, Math.abs(endX - startX),
                 Math.abs(endY - startY), Tool.RECTANGLE, lineWidthSlider.getValue(),
                 colorPicker.getValue().toString());
             shapes.addShape(rectangle);
-            gc.strokeRect(leftX, topY, Math.abs(endX - startX), Math.abs(endY - startY));
+            rectangle.draw(gc);
         });
     }
 
@@ -166,10 +166,11 @@ public class MiriPaintController implements Initializable {
             endY = e.getY();
             double leftX = Math.min(startX, endX);
             double topY = Math.min(startY, endY);
-            Shape ellipse = new Shape(leftX, topY, Math.abs(endX - startX), Math.abs(endY - startY),
+            EllipseShape ellipse = new EllipseShape(leftX, topY, Math.abs(endX - startX),
+                Math.abs(endY - startY),
                 Tool.ELLIPSE, lineWidthSlider.getValue(), colorPicker.getValue().toString());
             shapes.addShape(ellipse);
-            gc.strokeOval(leftX, topY, Math.abs(endX - startX), Math.abs(endY - startY));
+            ellipse.draw(gc);
         });
     }
 
