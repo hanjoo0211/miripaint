@@ -1,5 +1,7 @@
 package com.example.miripaint;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public class Shape {
 
     public double startX, startY, endX, endY;
@@ -62,4 +64,6 @@ public class Shape {
         this.endY = endY;
     }
 
+    public void draw(GraphicsContext gc) {
+    }
 }

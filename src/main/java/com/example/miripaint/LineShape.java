@@ -9,6 +9,7 @@ public class LineShape extends Shape {
         super(startX, startY, endX, endY, tool, lineWidth, color);
     }
 
+    @Override
     public void draw(GraphicsContext gc) {
         gc.strokeLine(startX, startY, endX, endY);
     }

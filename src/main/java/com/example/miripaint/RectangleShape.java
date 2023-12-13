@@ -9,6 +9,7 @@ public class RectangleShape extends Shape {
         super(startX, startY, endX, endY, tool, lineWidth, color);
     }
 
+    @Override
     public void draw(GraphicsContext gc) {
         gc.strokeRect(startX, startY, endX, endY);
     }

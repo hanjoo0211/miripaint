@@ -43,6 +43,7 @@ public class MiriPaintController implements Initializable {
     private Shape selectedShape = null;
     private ArrayList<Shape> selectedShapes = new ArrayList<>();
     private Tool tool = Tool.LINE;
+    private ToolState toolState = LineState.getInstance();
     private double startX, startY, endX, endY;
 
     @Override
@@ -87,6 +88,20 @@ public class MiriPaintController implements Initializable {
         String nowTool = button.getUserData().toString();
         toolLabel.setText(nowTool);
         tool = Tool.valueOf(nowTool);
+        switch (tool) {
+            case LINE:
+                toolState = LineState.getInstance();
+                break;
+            case RECTANGLE:
+                toolState = RectangleState.getInstance();
+                break;
+            case ELLIPSE:
+                toolState = EllipseState.getInstance();
+                break;
+            case SELECT:
+                toolState = SelectState.getInstance();
+                break;
+        }
         useTool();
     }
 
@@ -100,20 +115,18 @@ public class MiriPaintController implements Initializable {
 
     private void useTool() {
         disableTool();
-        switch (tool) {
-            case LINE:
-                drawLine();
-                break;
-            case RECTANGLE:
-                drawRectangle();
-                break;
-            case ELLIPSE:
-                drawEllipse();
-                break;
-            case SELECT:
-                selectShape();
-                break;
-        }
+        canvas.setOnMousePressed(e -> {
+            startX = e.getX();
+            startY = e.getY();
+        });
+        canvas.setOnMouseReleased(e -> {
+            endX = e.getX();
+            endY = e.getY();
+            toolState.toolAction(startX, startY, endX, endY, tool,
+                lineWidthSlider.getValue(),
+                colorPicker.getValue().toString(), gc, shapes, selectedShape, selectedShapes);
+            setSelectedShapesLabel();
+        });
     }
 
     private void disableTool() {
@@ -122,100 +135,99 @@ public class MiriPaintController implements Initializable {
         canvas.setOnMouseReleased(null);
     }
 
-
-    private void drawLine() {
-        canvas.setOnMousePressed(e -> {
-            startX = e.getX();
-            startY = e.getY();
-        });
-        canvas.setOnMouseReleased(e -> {
-            endX = e.getX();
-            endY = e.getY();
-            LineShape line = new LineShape(startX, startY, endX, endY, Tool.LINE,
-                lineWidthSlider.getValue(), colorPicker.getValue().toString());
-            shapes.add(line);
-            line.draw(gc);
-        });
-    }
-
-    private void drawRectangle() {
-        canvas.setOnMousePressed(e -> {
-            startX = e.getX();
-            startY = e.getY();
-        });
-        canvas.setOnMouseReleased(e -> {
-            endX = e.getX();
-            endY = e.getY();
-            double leftX = Math.min(startX, endX);
-            double topY = Math.min(startY, endY);
-            RectangleShape rectangle = new RectangleShape(leftX, topY, Math.abs(endX - startX),
-                Math.abs(endY - startY), Tool.RECTANGLE, lineWidthSlider.getValue(),
-                colorPicker.getValue().toString());
-            shapes.add(rectangle);
-            rectangle.draw(gc);
-        });
-    }
-
-    private void drawEllipse() {
-        canvas.setOnMousePressed(e -> {
-            startX = e.getX();
-            startY = e.getY();
-        });
-        canvas.setOnMouseReleased(e -> {
-            endX = e.getX();
-            endY = e.getY();
-            double leftX = Math.min(startX, endX);
-            double topY = Math.min(startY, endY);
-            EllipseShape ellipse = new EllipseShape(leftX, topY, Math.abs(endX - startX),
-                Math.abs(endY - startY),
-                Tool.ELLIPSE, lineWidthSlider.getValue(), colorPicker.getValue().toString());
-            shapes.add(ellipse);
-            ellipse.draw(gc);
-        });
-    }
-
-    private void selectShape() {
-        canvas.setOnMousePressed(e -> {
-            double x = e.getX();
-            double y = e.getY();
-            selectedShape = null;
-            for (Shape shape : shapes) {
-                if (shape.getTool() == Tool.LINE) {
-                    double x1 = shape.getStartX();
-                    double y1 = shape.getStartY();
-                    double x2 = shape.getEndX();
-                    double y2 = shape.getEndY();
-                    double distance =
-                        Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1) / Math.sqrt(
-                            Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
-                    if (distance <= shape.getLineWidth()) {
-                        selectedShape = shape;
-                    }
-                } else if (shape.getTool() == Tool.RECTANGLE) {
-                    if (x >= shape.getStartX() && x <= shape.getStartX() + shape.getEndX()
-                        && y >= shape.getStartY() && y <= shape.getStartY() + shape.getEndY()) {
-                        selectedShape = shape;
-                    }
-                } else if (shape.getTool() == Tool.ELLIPSE) {
-                    double centerX = shape.getStartX() + shape.getEndX() / 2;
-                    double centerY = shape.getStartY() + shape.getEndY() / 2;
-                    double a = shape.getEndX() / 2;
-                    double b = shape.getEndY() / 2;
-                    double distance = Math.pow(x - centerX, 2) / Math.pow(a, 2)
-                        + Math.pow(y - centerY, 2) / Math.pow(b, 2);
-                    if (distance <= 1) {
-                        selectedShape = shape;
-                    }
-                }
-            }
-            if (selectedShape == null) {
-                selectedShapes.clear();
-            } else if (!selectedShapes.contains(selectedShape)) {
-                selectedShapes.add(selectedShape);
-            }
-            setSelectedShapesLabel();
-        });
-    }
+//    private void drawLine() {
+//        canvas.setOnMousePressed(e -> {
+//            startX = e.getX();
+//            startY = e.getY();
+//        });
+//        canvas.setOnMouseReleased(e -> {
+//            endX = e.getX();
+//            endY = e.getY();
+//            LineShape line = new LineShape(startX, startY, endX, endY, Tool.LINE,
+//                lineWidthSlider.getValue(), colorPicker.getValue().toString());
+//            shapes.add(line);
+//            line.draw(gc);
+//        });
+//    }
+//
+//    private void drawRectangle() {
+//        canvas.setOnMousePressed(e -> {
+//            startX = e.getX();
+//            startY = e.getY();
+//        });
+//        canvas.setOnMouseReleased(e -> {
+//            endX = e.getX();
+//            endY = e.getY();
+//            double leftX = Math.min(startX, endX);
+//            double topY = Math.min(startY, endY);
+//            RectangleShape rectangle = new RectangleShape(leftX, topY, Math.abs(endX - startX),
+//                Math.abs(endY - startY), Tool.RECTANGLE, lineWidthSlider.getValue(),
+//                colorPicker.getValue().toString());
+//            shapes.add(rectangle);
+//            rectangle.draw(gc);
+//        });
+//    }
+//
+//    private void drawEllipse() {
+//        canvas.setOnMousePressed(e -> {
+//            startX = e.getX();
+//            startY = e.getY();
+//        });
+//        canvas.setOnMouseReleased(e -> {
+//            endX = e.getX();
+//            endY = e.getY();
+//            double leftX = Math.min(startX, endX);
+//            double topY = Math.min(startY, endY);
+//            EllipseShape ellipse = new EllipseShape(leftX, topY, Math.abs(endX - startX),
+//                Math.abs(endY - startY),
+//                Tool.ELLIPSE, lineWidthSlider.getValue(), colorPicker.getValue().toString());
+//            shapes.add(ellipse);
+//            ellipse.draw(gc);
+//        });
+//    }
+//
+//    private void selectShape() {
+//        canvas.setOnMousePressed(e -> {
+//            double x = e.getX();
+//            double y = e.getY();
+//            selectedShape = null;
+//            for (Shape shape : shapes) {
+//                if (shape.getTool() == Tool.LINE) {
+//                    double x1 = shape.getStartX();
+//                    double y1 = shape.getStartY();
+//                    double x2 = shape.getEndX();
+//                    double y2 = shape.getEndY();
+//                    double distance =
+//                        Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1) / Math.sqrt(
+//                            Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
+//                    if (distance <= shape.getLineWidth()) {
+//                        selectedShape = shape;
+//                    }
+//                } else if (shape.getTool() == Tool.RECTANGLE) {
+//                    if (x >= shape.getStartX() && x <= shape.getStartX() + shape.getEndX()
+//                        && y >= shape.getStartY() && y <= shape.getStartY() + shape.getEndY()) {
+//                        selectedShape = shape;
+//                    }
+//                } else if (shape.getTool() == Tool.ELLIPSE) {
+//                    double centerX = shape.getStartX() + shape.getEndX() / 2;
+//                    double centerY = shape.getStartY() + shape.getEndY() / 2;
+//                    double a = shape.getEndX() / 2;
+//                    double b = shape.getEndY() / 2;
+//                    double distance = Math.pow(x - centerX, 2) / Math.pow(a, 2)
+//                        + Math.pow(y - centerY, 2) / Math.pow(b, 2);
+//                    if (distance <= 1) {
+//                        selectedShape = shape;
+//                    }
+//                }
+//            }
+//            if (selectedShape == null) {
+//                selectedShapes.clear();
+//            } else if (!selectedShapes.contains(selectedShape)) {
+//                selectedShapes.add(selectedShape);
+//            }
+//            setSelectedShapesLabel();
+//        });
+//    }
 
     private void setSelectedShapesLabel() {
         selectedShapesLabel.setText("Selected: " + selectedShapes.size());
@@ -234,7 +246,6 @@ public class MiriPaintController implements Initializable {
             selectedShapeEndY.setText(String.valueOf(selectedShape.getEndY()));
             selectedShapeZOrder.setText(String.valueOf(shapes.indexOf(selectedShape)));
         }
-
     }
 
     public void deleteSelectedShapes() {
