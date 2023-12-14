@@ -1,6 +1,7 @@
 package com.example.miripaint;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Shape {
 
@@ -65,5 +66,7 @@ public class Shape {
     }
 
     public void draw(GraphicsContext gc) {
+        gc.setLineWidth(lineWidth);
+        gc.setStroke(Color.valueOf(color));
     }
 }

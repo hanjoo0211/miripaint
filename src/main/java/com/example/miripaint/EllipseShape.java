@@ -11,6 +11,7 @@ public class EllipseShape extends Shape {
 
     @Override
     public void draw(GraphicsContext gc) {
+        super.draw(gc);
         gc.strokeOval(startX, startY, endX, endY);
     }
 }

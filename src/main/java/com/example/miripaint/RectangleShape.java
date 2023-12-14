@@ -11,6 +11,7 @@ public class RectangleShape extends Shape {
 
     @Override
     public void draw(GraphicsContext gc) {
+        super.draw(gc);
         gc.strokeRect(startX, startY, endX, endY);
     }
 }

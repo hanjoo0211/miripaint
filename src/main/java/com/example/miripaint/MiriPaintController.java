@@ -63,8 +63,6 @@ public class MiriPaintController implements Initializable {
     private void updateCanvas() {
         setCanvas();
         for (Shape shape : shapes) {
-            gc.setLineWidth(shape.getLineWidth());
-            gc.setStroke(Color.valueOf(shape.getColor()));
             shape.draw(gc);
         }
     }
@@ -101,8 +99,6 @@ public class MiriPaintController implements Initializable {
 
     private void useTool() {
         disableTool();
-        setLineWidth();
-        setColor();
         canvas.setOnMousePressed(e -> {
             startX = e.getX();
             startY = e.getY();
