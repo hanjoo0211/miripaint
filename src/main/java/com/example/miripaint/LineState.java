@@ -20,7 +20,7 @@ public class LineState implements ToolState {
     @Override
     public void toolAction(double startX, double startY, double endX, double endY, Tool tool,
         double lineWidth, String color, GraphicsContext gc, ArrayList<Shape> shapes,
-        Shape selectedShape, ArrayList<Shape> selectedShapes) {
+        ArrayList<Shape> selectedShapes) {
         Shape shape = new LineShape(startX, startY, endX, endY, tool, lineWidth, color);
         shapes.add(shape);
         shape.draw(gc);

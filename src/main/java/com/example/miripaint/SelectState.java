@@ -20,10 +20,10 @@ public class SelectState implements ToolState {
     @Override
     public void toolAction(double startX, double startY, double endX, double endY, Tool tool,
         double lineWidth, String color, GraphicsContext gc, ArrayList<Shape> shapes,
-        Shape selectedShape, ArrayList<Shape> selectedShapes) {
+        ArrayList<Shape> selectedShapes) {
         double x = endX;
         double y = endY;
-        selectedShape = null;
+        Shape selectedShape = null;
         for (Shape shape : shapes) {
             if (shape.getTool() == Tool.LINE) {
                 double x1 = shape.getStartX();

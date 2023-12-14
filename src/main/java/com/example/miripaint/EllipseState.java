@@ -20,7 +20,7 @@ public class EllipseState implements ToolState {
     @Override
     public void toolAction(double startX, double startY, double endX, double endY, Tool tool,
         double lineWidth, String color, GraphicsContext gc, ArrayList<Shape> shapes,
-        Shape selectedShape, ArrayList<Shape> selectedShapes) {
+        ArrayList<Shape> selectedShapes) {
         double leftX = Math.min(startX, endX);
         double topY = Math.min(startY, endY);
         Shape shape = new EllipseShape(leftX, topY, Math.abs(endX - startX),

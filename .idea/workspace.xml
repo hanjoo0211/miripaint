@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="92712c67-21a3-4091-9726-cbb224aa5a6f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/EllipseShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/EllipseShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/LineShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/LineShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/EllipseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/EllipseState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/LineState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/LineState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/MiriPaintController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/RectangleShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/RectangleShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/RectangleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/RectangleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/SelectState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/SelectState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/miripaint/ToolState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/miripaint/ToolState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

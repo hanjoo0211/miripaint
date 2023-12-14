@@ -40,7 +40,7 @@ public class MiriPaintController implements Initializable {
     private ColorPicker colorPicker;
     private GraphicsContext gc;
     private ArrayList<Shape> shapes = new ArrayList<>();
-    private Shape selectedShape = null;
+    //    private Shape selectedShape = null;
     private ArrayList<Shape> selectedShapes = new ArrayList<>();
     private Tool tool = Tool.LINE;
     private ToolState toolState = LineState.getInstance();
@@ -124,7 +124,7 @@ public class MiriPaintController implements Initializable {
             endY = e.getY();
             toolState.toolAction(startX, startY, endX, endY, tool,
                 lineWidthSlider.getValue(),
-                colorPicker.getValue().toString(), gc, shapes, selectedShape, selectedShapes);
+                colorPicker.getValue().toString(), gc, shapes, selectedShapes);
             setSelectedShapesLabel();
         });
     }
@@ -231,7 +231,7 @@ public class MiriPaintController implements Initializable {
 
     private void setSelectedShapesLabel() {
         selectedShapesLabel.setText("Selected: " + selectedShapes.size());
-        if (selectedShape == null) {
+        if (selectedShapes.isEmpty()) {
             selectedShapeText.setText("");
             selectedShapeStartX.setText("");
             selectedShapeStartY.setText("");
@@ -239,6 +239,7 @@ public class MiriPaintController implements Initializable {
             selectedShapeEndY.setText("");
             selectedShapeZOrder.setText("");
         } else {
+            Shape selectedShape = selectedShapes.get(selectedShapes.size() - 1);
             selectedShapeText.setText(selectedShape.getTool().toString());
             selectedShapeStartX.setText(String.valueOf(selectedShape.getStartX()));
             selectedShapeStartY.setText(String.valueOf(selectedShape.getStartY()));
@@ -264,7 +265,8 @@ public class MiriPaintController implements Initializable {
 
 
     public void applyShapeChanges() {
-        if (selectedShape != null) {
+        if (!selectedShapes.isEmpty()) {
+            Shape selectedShape = selectedShapes.get(selectedShapes.size() - 1);
             selectedShape.setStartX(Double.parseDouble(selectedShapeStartX.getText()));
             selectedShape.setStartY(Double.parseDouble(selectedShapeStartY.getText()));
             selectedShape.setEndX(Double.parseDouble(selectedShapeEndX.getText()));
